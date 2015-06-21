@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Car stopping distance application</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Car stopping distance application">
+  <meta name="author" content="">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Car stopping distance application</h1>
+    <h2></h2>
+    <p><br/></p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>Car stopping distance</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>You are driving a car among the other cars.</p>
+
+<p>It might be a rush hour.</p>
+
+<p>How close is it safe to drive behind the car that is ahead of you?</p>
+
+<p>Car stopping distance application tells you the safe distance.</p>
+
+<p>Insert the units of speed, miles or kilometers per hour, and units of distance, feet or meter.</p>
+
+<p>Put into the numeric input the speed you want the answer for and the application gives the distance.</p>
+
+<p>Application can be found in</p>
+
+<p><a href="https://dataaj73.shinyapps.io/carstop-app">https://dataaj73.shinyapps.io/carstop-app</a></p>
+
+<p>and the next page contains a screenshot of the application</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-2" style="background:;">
+  <article data-timings="">
+    <p><img src="App_pic.png" alt="Screenshot application"></p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Application</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>The left panel contains all the inputs and the right panel all the outputs. The application uses a model</p>
+
+<p>$$Distance = \alpha * Speed + \beta * Speed<sup>2$$</sup></p>
+
+<p>and the R dataset &quot;cars&quot; in order to produce the prediction for the stopping distance.</p>
+
+<p>As an example we calculate the stopping distance with initial velocity 50 miles per hour</p>
+
+<pre><code class="r">speed &lt;- cars$speed
+speed_sq &lt;- speed^2
+dist &lt;- cars$dist
+modelFit &lt;- lm(dist ~ speed + speed_sq - 1)
+est &lt;- data.frame(speed = 50, speed_sq = 50^2)
+round(predict(modelFit, est), 2)
+</code></pre>
+
+<pre><code>##     1 
+## 287.3
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Application</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>Furthermore the application contains a figure that shows how the stopping distance develops with increasing speed.</p>
+
+<p>You can choose the range of the plot with slider inputs.</p>
+
+<p>Improve the safety of your driving with the car stopping distance application.</p>
+
+<p>An easy way to reduce your risks in driving!</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='Car stopping distance'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='NA'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Application'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Application'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
